@@ -1,0 +1,73 @@
+---
+import { SITE } from '../data/site';
+
+// Datos verificables desde GitHub (2026-06): 10 repos públicos,
+// 4 con actividad en 2026, 2 demos desplegadas y vivas.
+const stats = [
+  { value: '10', label: 'repos públicos' },
+  { value: '4', label: 'proyectos activos 2026' },
+  { value: '2', label: 'demos en producción' },
+];
+---
+
+<section id="inicio" class="relative overflow-hidden">
+  <!-- glow ámbar sutil, solo decorativo -->
+  <div
+    class="pointer-events-none absolute inset-0"
+    style="background: radial-gradient(ellipse 70% 45% at 50% -5%, var(--glow), transparent 70%);"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative mx-auto flex min-h-svh max-w-5xl flex-col justify-center px-5 pt-24 pb-16 sm:px-8">
+    <p data-reveal class="font-mono text-sm tracking-widest text-accent">
+      {SITE.name} · {SITE.role}
+    </p>
+
+    <h1
+      data-reveal
+      style="--reveal-delay: 80ms"
+      class="mt-6 max-w-3xl font-display text-4xl leading-[1.08] font-bold tracking-tight text-ink sm:text-5xl md:text-6xl"
+    >
+      Construyo productos reales<span class="text-accent">.</span>
+    </h1>
+
+    <p
+      data-reveal
+      style="--reveal-delay: 160ms"
+      class="mt-6 max-w-2xl text-lg leading-relaxed text-muted"
+    >
+      De e-commerce y paneles de negocio en tiempo real con <strong class="font-medium text-ink">React y Supabase</strong>,
+      a equipos de <strong class="font-medium text-ink">agentes de IA</strong> orquestados con LangGraph.
+    </p>
+
+    <div data-reveal style="--reveal-delay: 240ms" class="mt-10 flex flex-wrap items-center gap-4">
+      <a
+        href="#proyectos"
+        class="group inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 font-mono text-sm font-medium text-bg transition-transform duration-200 hover:-translate-y-0.5"
+      >
+        Ver proyectos
+        <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-y-0.5">↓</span>
+      </a>
+      <a
+        href={SITE.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-md border border-edge px-5 py-3 font-mono text-sm text-ink transition-colors duration-200 hover:border-accent hover:text-accent"
+      >
+        GitHub →
+      </a>
+    </div>
+
+    <ul data-reveal style="--reveal-delay: 320ms" class="mt-16 flex flex-wrap gap-x-12 gap-y-6">
+      {
+        stats.map((s) => (
+          <li>
+            <p class="font-display text-3xl font-bold text-ink">{s.value}</p>
+            <p class="mt-1 font-mono text-xs tracking-wide text-muted">{s.label}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

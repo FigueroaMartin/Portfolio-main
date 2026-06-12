@@ -1,0 +1,83 @@
+{
+  "featured": [
+    {
+      "slug": "forja",
+      "name": "FORJA",
+      "year": "2026",
+      "kind": "E-commerce",
+      "summary": "Tienda de joyería masculina de autor con identidad de marca propia: catálogo por líneas, página de producto con selector de material y precio dinámico, carrito, checkout simulado y cotización por email vía API serverless.",
+      "stack": ["React 19", "Vite", "Tailwind CSS", "Radix UI", "Framer Motion", "Nodemailer"],
+      "repo": "https://github.com/FigueroaMartin/forja",
+      "demo": "https://figueroamartin.github.io/forja/",
+      "highlight": true
+    },
+    {
+      "slug": "improfor-web",
+      "name": "Improfor Web Admin",
+      "year": "2026",
+      "kind": "Panel de negocio",
+      "summary": "Panel de administración para un sistema de despacho de EPP. Comparte base de datos Supabase con una app móvil Expo: inventario, pedidos y despachos sincronizados en tiempo real, con escáner de códigos de barra por webcam.",
+      "stack": ["React 18", "Vite", "Supabase", "Realtime", "React Router", "html5-qrcode"],
+      "repo": "https://github.com/FigueroaMartin/Proyecto-Improfor-Web",
+      "demo": "https://figueroamartin.github.io/Proyecto-Improfor-Web/",
+      "highlight": false
+    },
+    {
+      "slug": "figuer-agentes",
+      "name": "Equipo de Agentes Dev",
+      "year": "2026",
+      "kind": "IA · Agentes",
+      "summary": "Equipo de 8 agentes de IA (arquitecto, coder, reviewer, auditor de seguridad, tester, docs, dependencias y release) orquestados con LangGraph y la API de Anthropic, con loop de revisión iterativa y testing en 3 niveles: unit, integration y LLM-as-judge.",
+      "stack": ["Python", "LangGraph", "Anthropic API", "pytest"],
+      "repo": "https://github.com/FigueroaMartin/Figuer-agentes-",
+      "demo": null,
+      "highlight": false
+    },
+    {
+      "slug": "conecta2",
+      "name": "Conectados",
+      "year": "2025",
+      "kind": "Tiempo real",
+      "summary": "Plataforma de chat y video en tiempo real para jugadores, estilo Discord: canales, mensajería con Supabase Realtime y salas de video con WebRTC. Esquema SQL propio con índices y políticas RLS.",
+      "stack": ["Astro", "React", "TypeScript", "Supabase", "WebRTC", "Tailwind CSS"],
+      "repo": "https://github.com/FigueroaMartin/Conecta2",
+      "demo": null,
+      "highlight": false
+    },
+    {
+      "slug": "finanzas-personales",
+      "name": "Finanzas Personales",
+      "year": "2026",
+      "kind": "PWA · Datos",
+      "summary": "Dashboard de finanzas personales instalable como PWA, con visualización de datos en Chart.js y un sistema de diseño propio: paleta verde oscura, tokens CSS y tipografía Syne + DM Mono.",
+      "stack": ["JavaScript", "Chart.js", "PWA", "CSS"],
+      "repo": "https://github.com/FigueroaMartin/finanzas-personales",
+      "demo": null,
+      "highlight": false
+    },
+    {
+      "slug": "proyecto-tda",
+      "name": "Inventarios El Gran Poeta",
+      "year": "2025",
+      "kind": "Backend",
+      "summary": "Sistema de gestión de inventario para una biblioteca: arquitectura por capas con DAOs (productos, autores, editoriales, bodegas, movimientos, usuarios), base de datos MySQL y tests con pytest.",
+      "stack": ["Python", "MySQL", "pytest"],
+      "repo": "https://github.com/FigueroaMartin/Proyecto-TDA",
+      "demo": null,
+      "highlight": false
+    }
+  ],
+  "secondary": [
+    {
+      "slug": "ecosnack",
+      "name": "EcoSnack",
+      "year": "2025",
+      "kind": "E-commerce",
+      "summary": "Tienda de snacks saludables construida en HTML, CSS y JavaScript vanilla, sin frameworks.",
+      "stack": ["HTML", "CSS", "JavaScript"],
+      "repo": "https://github.com/FigueroaMartin/E-commerce",
+      "demo": null,
+      "highlight": false
+    }
+  ]
+}

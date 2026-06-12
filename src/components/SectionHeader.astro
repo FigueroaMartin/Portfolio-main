@@ -1,0 +1,15 @@
+---
+// Encabezado numerado estilo "Línea 01" — eco del lenguaje de FORJA.
+interface Props {
+  number: string;
+  title: string;
+  lead?: string;
+}
+const { number, title, lead } = Astro.props;
+---
+
+<div data-reveal class="mb-12">
+  <p class="font-mono text-sm tracking-widest text-accent">{number} —</p>
+  <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">{title}</h2>
+  {lead && <p class="mt-4 max-w-2xl leading-relaxed text-muted">{lead}</p>}
+</div>

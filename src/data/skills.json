@@ -1,0 +1,20 @@
+{
+  "groups": [
+    {
+      "title": "Frontend",
+      "skills": ["JavaScript", "TypeScript", "React", "Astro", "Vite", "Tailwind CSS", "CSS Modules", "HTML / CSS"]
+    },
+    {
+      "title": "Backend & datos",
+      "skills": ["Python", "Supabase", "PostgreSQL (Realtime · RLS)", "MySQL", "Node.js"]
+    },
+    {
+      "title": "IA & agentes",
+      "skills": ["LangGraph", "Anthropic API (Claude)", "Arquitecturas multi-agente", "LLM-as-judge"]
+    },
+    {
+      "title": "Calidad & DevOps",
+      "skills": ["pytest", "GitHub Actions", "Vercel", "GitHub Pages", "PWA", "Git"]
+    }
+  ]
+}

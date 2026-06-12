@@ -1,0 +1,104 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Tokens semánticos ─────────────────────────────────────────────
+   Identidad: carbón cálido + crema + ámbar.
+   Derivada del lenguaje visual propio de los proyectos de Martín
+   (FORJA: negro cálido + dorado · finanzas: dark + mono labels). */
+:root {
+  /* modo claro — "papel" */
+  --bg: #f6f3ec;
+  --surface: #fdfbf7;
+  --edge: #e2dbc9;
+  --edge-strong: #cfc5ab;
+  --ink: #1d1812;
+  --muted: #6d6450;
+  --accent: #8c6210;
+  --accent-soft: #8c62101a;
+  --glow: transparent;
+}
+
+.dark {
+  /* modo oscuro — "carbón" (default) */
+  --bg: #0c0b09;
+  --surface: #14120e;
+  --edge: #262217;
+  --edge-strong: #3b3522;
+  --ink: #ede7db;
+  --muted: #97907e;
+  --accent: #e0a938;
+  --accent-soft: #e0a93821;
+  --glow: #e0a93812;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-edge: var(--edge);
+  --color-edge-strong: var(--edge-strong);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+
+  --font-display: 'Syne Variable', system-ui, sans-serif;
+  --font-body: 'Inter Variable', system-ui, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, 'Cascadia Mono', monospace;
+
+  --ease-out-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.3s var(--ease-out-soft), color 0.3s var(--ease-out-soft);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* ── Revelado al hacer scroll ──────────────────────────────────────
+   Los elementos solo se ocultan si JS está activo (html.js),
+   así el contenido nunca queda invisible sin JavaScript. */
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.65s var(--ease-out-soft),
+    transform 0.65s var(--ease-out-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+html.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  html.js [data-reveal] {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Foco visible y accesible ── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}

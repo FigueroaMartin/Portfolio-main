@@ -1,0 +1,42 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { SITE } from '../data/site';
+---
+
+<section id="sobre-mi" class="mx-auto max-w-5xl px-5 py-24 sm:px-8">
+  <SectionHeader number="03" title="Sobre mí" />
+
+  <div class="grid items-start gap-10 md:grid-cols-[200px_1fr]">
+    {/* TODO: reemplaza el avatar de GitHub por una foto tuya si prefieres (src/data/site.ts) */}
+    <img
+      data-reveal
+      src={`${import.meta.env.BASE_URL}${SITE.avatar}`}
+      alt={`Foto de ${SITE.name}`}
+      width="200"
+      height="200"
+      loading="lazy"
+      decoding="async"
+      class="mx-auto rounded-lg border border-edge grayscale transition-all duration-300 hover:grayscale-0 md:mx-0"
+    />
+
+    <div data-reveal style="--reveal-delay: 100ms" class="space-y-5 leading-relaxed text-muted">
+      <p>
+        Soy <strong class="font-medium text-ink">{SITE.name}</strong>, desarrollador full-stack.
+        Mi camino se lee en mis repos: empecé con HTML, CSS y JavaScript vanilla, pasé a construir
+        aplicaciones completas con <strong class="font-medium text-ink">React, Astro y Supabase</strong> —
+        incluyendo un panel de despacho que sincroniza inventario en tiempo real con una app móvil — y
+        hoy estoy enfocado en <strong class="font-medium text-ink">sistemas de agentes de IA</strong> con
+        LangGraph y la API de Anthropic.
+      </p>
+      <p>
+        Lo que muestran mis repos: productos con identidad propia, paneles que resuelven una operación
+        real y herramientas que automatizan trabajo — construidos y desplegados, no solo planeados.
+      </p>
+      <p class="rounded-md border border-dashed border-edge-strong bg-surface px-4 py-3 font-mono text-[13px]">
+        TODO: agrega 2–3 líneas personales aquí — qué estudias o en qué trabajas, dónde vives y qué
+        estás buscando (práctica, primer rol, freelance). Se edita en
+        <code class="text-accent">src/components/About.astro</code>.
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import ProjectCard from './ProjectCard.astro';
+import { SITE } from '../data/site';
+import data from '../data/projects.json';
+import type { Project } from '../types';
+
+const featured = data.featured as Project[];
+const secondary = data.secondary as Project[];
+---
+
+<section id="proyectos" class="mx-auto max-w-5xl px-5 py-24 sm:px-8">
+  <SectionHeader
+    number="01"
+    title="Proyectos"
+    lead="Una selección de lo que he construido — todo con código real en GitHub, dos con demo en producción."
+  />
+
+  <div class="grid gap-5 md:grid-cols-2 md:[&>article:last-child]:col-span-2">
+    {featured.map((p, i) => <ProjectCard project={p} index={i} />)}
+  </div>
+
+  {
+    secondary.length > 0 && (
+      <div data-reveal class="mt-12">
+        <h3 class="font-mono text-sm tracking-widest text-muted">También en el camino</h3>
+        <ul class="mt-4 space-y-3">
+          {secondary.map((p) => (
+            <li class="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-edge pb-3">
+              <a
+                href={p.repo}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-display text-lg font-bold text-ink underline-offset-4 transition-colors duration-200 hover:text-accent hover:underline"
+              >
+                {p.name} ↗
+              </a>
+              <span class="font-mono text-xs text-muted">{p.year}</span>
+              <span class="text-sm text-muted">{p.summary}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  <p data-reveal class="mt-10 font-mono text-sm text-muted">
+    ¿Más? Todo el historial está en{' '}
+    <a
+      href={`${SITE.github}?tab=repositories`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-accent underline underline-offset-4 hover:text-ink"
+    >
+      github.com/FigueroaMartin ↗
+    </a>
+  </p>
+</section>

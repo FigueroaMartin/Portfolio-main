@@ -17,14 +17,17 @@ const groups = data.groups as SkillGroup[];
     <div class="grid gap-x-10 gap-y-12 sm:grid-cols-2">
       {
         groups.map((group, gi) => (
-          <div data-reveal style={`--reveal-delay: ${gi * 70}ms`}>
+          <div data-reveal data-skill-group style={`--reveal-delay: ${gi * 70}ms`}>
             <h3 class="flex items-center gap-3 font-display text-lg font-bold text-ink">
-              <span class="h-px w-6 bg-accent" aria-hidden="true" />
+              <span class="skill-line h-px w-6 bg-accent" aria-hidden="true" />
               {group.title}
             </h3>
             <ul class="mt-4 flex flex-wrap gap-2">
-              {group.skills.map((skill) => (
-                <li class="rounded-md border border-edge bg-bg px-3 py-1.5 font-mono text-[13px] text-muted transition-colors duration-200 hover:border-accent/50 hover:text-ink">
+              {group.skills.map((skill, si) => (
+                <li
+                  style={`--chip-i: ${Math.min(si, 8)}`}
+                  class="rounded-md border border-edge bg-bg px-3 py-1.5 font-mono text-[13px] text-muted transition-colors duration-200 hover:border-accent/50 hover:text-ink"
+                >
                   {skill}
                 </li>
               ))}

@@ -49,6 +49,22 @@
   --ease-out-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+/* ── Muelle sutil para transforms ──────────────────────────────────
+   linear() sampleado de un spring amortiguado (overshoot ~4%);
+   sin soporte cae al easing suave. Solo para transform, nunca color. */
+:root {
+  --spring: var(--ease-out-soft);
+}
+@supports (transition-timing-function: linear(0, 1)) {
+  :root {
+    --spring: linear(
+      0, 0.307 4.3%, 0.579 8.6%, 0.792 13%, 0.944 17.5%,
+      1.032 22.4%, 1.046 25.6%, 1.042 29.8%, 1.011 38.7%,
+      0.995 48.2%, 1 62.5%, 1
+    );
+  }
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5.5rem;
@@ -85,11 +101,84 @@ html.js [data-reveal].is-visible {
   transform: none;
 }
 
+/* ── Cards de proyecto ─────────────────────────────────────────────
+   Lift con muelle (--spring) sobre `translate` (Tailwind 4 usa la
+   propiedad nativa, separada del `transform` del reveal); borde y
+   sombra con el easing suave. El hover ya viene gated por Tailwind 4
+   (@media (hover: hover)) y por motion-safe en el componente. */
+.project-card {
+  transition:
+    translate 0.35s var(--spring),
+    border-color 0.3s var(--ease-out-soft),
+    box-shadow 0.3s var(--ease-out-soft);
+}
+
+/* Con JS activo, el reveal (html.js [data-reveal]) declararía su propia
+   transición y pisaría la de arriba; esta regla más específica une ambas:
+   opacity/transform con el delay del reveal, el resto sin delay. */
+html.js .project-card[data-reveal] {
+  transition:
+    opacity 0.65s var(--ease-out-soft) var(--reveal-delay, 0ms),
+    transform 0.65s var(--ease-out-soft) var(--reveal-delay, 0ms),
+    translate 0.35s var(--spring),
+    border-color 0.3s var(--ease-out-soft),
+    box-shadow 0.3s var(--ease-out-soft);
+}
+
+/* ── Efecto hero-glow-drift ────────────────────────────────────────
+   El glow ámbar deriva hacia arriba y se apaga mientras el hero sale
+   del viewport (scroll-driven CSS, corre en el compositor, funciona
+   en táctil). Sin soporte de animation-timeline queda estático.
+   Desactivar: quitar la clase hero-glow en Hero.astro. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-glow {
+      animation: hero-glow-drift linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+  }
+}
+@keyframes hero-glow-drift {
+  to {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+}
+
+/* ── Efecto skills-choreo ──────────────────────────────────────────
+   Al revelarse cada grupo (reutiliza el IntersectionObserver y la
+   clase .is-visible existentes): la línea ámbar se dibuja y los
+   chips entran en cascada (--chip-i por chip, cap en el componente).
+   Desactivar: quitar data-skill-group en Skills.astro. */
+html.js [data-skill-group] .skill-line {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease-out-soft) 0.1s;
+}
+html.js [data-skill-group].is-visible .skill-line {
+  transform: scaleX(1);
+}
+html.js [data-skill-group] ul > li {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.45s var(--ease-out-soft),
+    transform 0.45s var(--ease-out-soft);
+  transition-delay: calc(0.1s + var(--chip-i, 0) * 40ms);
+}
+html.js [data-skill-group].is-visible ul > li {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  html.js [data-reveal] {
+  html.js [data-reveal],
+  html.js [data-skill-group] .skill-line,
+  html.js [data-skill-group] ul > li {
     transition: none;
     opacity: 1;
     transform: none;

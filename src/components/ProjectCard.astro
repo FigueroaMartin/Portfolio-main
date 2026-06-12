@@ -11,9 +11,9 @@ const num = String(index + 1).padStart(2, '0');
 
 <article
   data-reveal
-  style={`--reveal-delay: ${(index % 3) * 70}ms`}
+  style={`--reveal-delay: ${index === 0 ? 0 : ((index - 1) % 2) * 70}ms`}
   class:list={[
-    'group relative flex flex-col rounded-lg border border-edge bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-[0_0_0_1px_var(--accent-soft),0_12px_40px_-12px_var(--accent-soft)]',
+    'project-card group relative flex flex-col rounded-lg border border-edge bg-surface p-6 motion-safe:hover:-translate-y-1 hover:border-accent/60 hover:shadow-[0_0_0_1px_var(--accent-soft),0_12px_40px_-12px_var(--accent-soft)]',
     project.highlight && 'md:col-span-2',
   ]}
 >

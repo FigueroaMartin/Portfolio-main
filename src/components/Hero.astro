@@ -13,7 +13,7 @@ const stats = [
 <section id="inicio" class="relative overflow-hidden">
   <!-- glow ámbar sutil, solo decorativo -->
   <div
-    class="pointer-events-none absolute inset-0"
+    class="hero-glow pointer-events-none absolute inset-0"
     style="background: radial-gradient(ellipse 70% 45% at 50% -5%, var(--glow), transparent 70%);"
     aria-hidden="true"
   >
@@ -44,10 +44,10 @@ const stats = [
     <div data-reveal style="--reveal-delay: 240ms" class="mt-10 flex flex-wrap items-center gap-4">
       <a
         href="#proyectos"
-        class="group inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 font-mono text-sm font-medium text-bg transition-transform duration-200 hover:-translate-y-0.5"
+        class="group inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 font-mono text-sm font-medium text-bg transition-transform duration-300 ease-(--spring) motion-safe:hover:-translate-y-0.5"
       >
         Ver proyectos
-        <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-y-0.5">↓</span>
+        <span aria-hidden="true" class="transition-transform duration-300 ease-(--spring) motion-safe:group-hover:translate-y-0.5">↓</span>
       </a>
       <a
         href={SITE.github}
